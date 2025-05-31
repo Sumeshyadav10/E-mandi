@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: 'https://e-mandi-ow40.onrender.com/api', // your backend API base
+  baseURL: "https://e-commerce-1-fkpy.onrender.com/api", // your backend API base
   withCredentials: true, // if using cookies/sessions
 });
 

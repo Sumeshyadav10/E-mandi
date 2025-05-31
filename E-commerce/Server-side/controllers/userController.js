@@ -46,10 +46,8 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log("Login attempt with email:", email); // Debugging line
 
     const user = await User.findOne({ email });
-    console.log("User found:", user); // Debugging line
     if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
     const isMatch = await user.matchPassword(password);
@@ -57,7 +55,8 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
 
     generateToken(res, user._id); // Set cookie with JWT
-
+    console.log("token generated for user:", user._id); // Debugging line
+    console.log("User logged in:", user); // Debugging line
     res.json({
       _id: user._id,
       name: user.name,
